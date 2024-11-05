@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebServerProject", "MyWebServerProject\MyWebServerProject.csproj", "{D6976702-7CB5-4222-9CDF-FB1EEEDFA570}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebServerProject", "MyWebServerProject\MyWebServerProject.csproj", "{D6976702-7CB5-4222-9CDF-FB1EEEDFA570}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{18E04E0A-B90B-47B2-A7BD-C94065B2F240}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{18E04E0A-B90B-47B2-A7BD-C94065B2F240}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{CC1247EA-A3BA-4C91-9E95-C21796955C2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{CC1247EA-A3BA-4C91-9E95-C21796955C2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{C1FE2958-0881-49B6-B21F-F8D8CF2E834C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{CC1247EA-A3BA-4C91-9E95-C21796955C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC1247EA-A3BA-4C91-9E95-C21796955C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC1247EA-A3BA-4C91-9E95-C21796955C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1FE2958-0881-49B6-B21F-F8D8CF2E834C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1FE2958-0881-49B6-B21F-F8D8CF2E834C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1FE2958-0881-49B6-B21F-F8D8CF2E834C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1FE2958-0881-49B6-B21F-F8D8CF2E834C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

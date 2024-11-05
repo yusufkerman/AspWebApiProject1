@@ -12,13 +12,10 @@ namespace Repository.EFCore
             : base(options)
         {
         }
-        public DbSet<Test> Tests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.ApplyConfiguration(new TestConfig());
 
             //modelBuilder.ApplyConfigurationsFromAssembly(Assembly
             //    .GetExecutingAssembly());
