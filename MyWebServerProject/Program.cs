@@ -12,6 +12,10 @@ builder.Services.AddSwaggerGen();
 
 //Custom Extensions
 builder.Services.ConfigureMySqlContext(builder.Configuration);
+builder.Services.ConfigureJWTAuthentication(builder.Configuration);
+builder.Services.RegisterIOCForManagers();
+
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
