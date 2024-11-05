@@ -1,0 +1,63 @@
+# Visual Studio ve .NET Projesi için yaygın dosya ve klasör dışlamaları
+
+# Kullanıcı spesifik dosyalar
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build klasörleri
+bin/
+obj/
+
+# Yaygın geçici dosyalar
+*.log
+*.tlog
+*.vspscc
+*.vspx
+*.pidb
+*.svclog
+*.scc
+
+# Paketler ve bağımlılıklar
+packages/
+node_modules/
+
+# Yaygın proje ayarları
+.project
+.idea/
+*.cache
+*.pdb
+*.mdb
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Diğer yaygın dışlamalar
+*.csproj.user
+*.dbmdl
+*.opendb
+*.VC.db
+*.pyc
+*.pyo
+
+# Rider ve diğer IDE'ler için
+.idea/
+*.sln.iml
+
+# ReSharper dosyaları
+.ReSharper*/
+resharper.xml
+
+# macOS sistem dosyaları
+.DS_Store
+
+# Windows sistem dosyaları
+Thumbs.db
+
+.vs/
