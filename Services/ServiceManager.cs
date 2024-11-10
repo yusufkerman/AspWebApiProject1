@@ -9,6 +9,13 @@ namespace Services
 {
     public class ServiceManager : IServiceManager
     {
-        public IAuthenticationService AuthenticationService => throw new NotImplementedException();
+        public IAuthenticationService AuthenticationService => _authenticationService;
+
+        private readonly IAuthenticationService _authenticationService;
+
+        public ServiceManager(IAuthenticationService authenticationService)
+        {
+            _authenticationService = authenticationService;
+        }
     }
 }

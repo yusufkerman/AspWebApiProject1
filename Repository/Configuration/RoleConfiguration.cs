@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Repository.Configuration
 {
-    public class RoleConfiguration : IEntityTypeConfiguration<IdentityUser>
+    public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
     {
-        public void Configure(EntityTypeBuilder<IdentityUser> builder)
+        public void Configure(EntityTypeBuilder<IdentityRole> builder)
         {
             builder.HasData(
                     new IdentityRole

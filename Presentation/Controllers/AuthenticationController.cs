@@ -34,7 +34,7 @@ namespace Presentation.Controllers
 
             return StatusCode(201);
         }
-        [HttpPost("login")]
+        [HttpGet("login")]
         public async Task<IActionResult> Authenticate(
             [FromBody] UserAuthenticationInformationDto userInformation)
         {

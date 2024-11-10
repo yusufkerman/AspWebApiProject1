@@ -5,6 +5,8 @@ using Repository.EFCore;
 using System.Text;
 using Services.Contracts;
 using Services;
+using Entities.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace MyWebServerProject.Extensions
 {
@@ -57,7 +59,21 @@ namespace MyWebServerProject.Extensions
             service.AddScoped<IAuthenticationService, AuthenticationManager>();
             service.AddScoped<IServiceManager,ServiceManager>();
         }
-        
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            var builder = services.AddIdentity<User, IdentityRole>(opts =>
+            {
+                opts.Password.RequireDigit = true;
+                opts.Password.RequireLowercase = true;
+                opts.Password.RequireUppercase = true;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequiredLength = 6;
+
+                opts.User.RequireUniqueEmail = true;
+            })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+        }
     
     }
 }
