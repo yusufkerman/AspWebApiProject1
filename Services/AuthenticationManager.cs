@@ -90,11 +90,6 @@ namespace Services
             var result = (_user != null &&
                 await _userManager.CheckPasswordAsync(_user, userInformation.Password));
 
-            if (!result)
-            {
-                throw new Exception("Validation failed");
-            }
-
             return result;
         }
     }

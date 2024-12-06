@@ -11,11 +11,16 @@ namespace Services
     {
         public IAuthenticationService AuthenticationService => _authenticationService;
 
-        private readonly IAuthenticationService _authenticationService;
+        public IUserService UserService => _userService;
 
-        public ServiceManager(IAuthenticationService authenticationService)
+        private readonly IAuthenticationService _authenticationService;
+        private readonly IUserService _userService;
+
+        public ServiceManager(IAuthenticationService authenticationService,
+            IUserService userService)
         {
             _authenticationService = authenticationService;
+            _userService = userService;
         }
     }
 }

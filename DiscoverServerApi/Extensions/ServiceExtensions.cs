@@ -56,6 +56,7 @@ namespace MyWebServerProject.Extensions
         }
         public static void RegisterIOCForManagers(this IServiceCollection service)
         {
+            service.AddScoped<IUserService, UserManipulationManager>();
             service.AddScoped<IAuthenticationService, AuthenticationManager>();
             service.AddScoped<IServiceManager,ServiceManager>();
         }

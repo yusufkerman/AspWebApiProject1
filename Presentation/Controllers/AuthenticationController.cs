@@ -2,6 +2,7 @@
 using Entities;
 using Entities.DataTransferObjects;
 using Services.Contracts;
+using Microsoft.AspNetCore.Identity;
 
 namespace Presentation.Controllers
 {
@@ -34,7 +35,7 @@ namespace Presentation.Controllers
 
             return StatusCode(201);
         }
-        [HttpGet("login")]
+        [HttpPost("login")]
         public async Task<IActionResult> Authenticate(
             [FromBody] UserAuthenticationInformationDto userInformation)
         {
@@ -43,9 +44,15 @@ namespace Presentation.Controllers
                 return Unauthorized(); //401
             }
 
+            // Kullanıcıyı bul ve IP adresini güncelle
+            string ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+            await _serviceManager.UserService.UpdateUserIpAdress(ipAddress,userInformation.UserName);
+
             var tokenDto = await _serviceManager
                 .AuthenticationService
                 .GenerateJwtToken(userInformation.UserName);
+
+
 
             return Ok(tokenDto);
         }

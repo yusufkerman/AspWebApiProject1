@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.EFCore;
 
@@ -10,9 +11,11 @@ using Repository.EFCore;
 namespace MyWebServerProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241206145936_IpAdressAddedOnUserModel")]
+    partial class IpAdressAddedOnUserModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,6 +42,9 @@ namespace MyWebServerProject.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("FirstName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("IpAdress")
                         .HasColumnType("longtext");
 
                     b.Property<string>("LastName")
@@ -117,13 +123,13 @@ namespace MyWebServerProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "27665cdf-10a9-4478-8893-fc72b6d00528",
+                            Id = "e9047223-b85b-41fd-b6a5-cb6fabdfc471",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "4c55a442-e7b9-4103-9086-d8a34db21ced",
+                            Id = "2069535d-6d90-4c60-9a4e-af22388ed0dc",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

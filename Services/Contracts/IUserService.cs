@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Services.Contracts
 {
-    public interface IServiceManager
+    public interface IUserService
     {
-        IAuthenticationService AuthenticationService { get; }
-        IUserService UserService { get; }
+        public Task UpdateUserIpAdress(string ipAddress,string userName);
     }
 }
