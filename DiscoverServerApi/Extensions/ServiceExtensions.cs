@@ -56,6 +56,7 @@ namespace MyWebServerProject.Extensions
         }
         public static void RegisterIOCForManagers(this IServiceCollection service)
         {
+            service.AddScoped<IApiKeyValidationService,ApiKeyValidationManager>();
             service.AddScoped<IUserService, UserManipulationManager>();
             service.AddScoped<IAuthenticationService, AuthenticationManager>();
             service.AddScoped<IServiceManager,ServiceManager>();
@@ -70,7 +71,7 @@ namespace MyWebServerProject.Extensions
                 opts.Password.RequireNonAlphanumeric = false;
                 opts.Password.RequiredLength = 6;
 
-                opts.User.RequireUniqueEmail = true;
+                opts.User.RequireUniqueEmail = false;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();

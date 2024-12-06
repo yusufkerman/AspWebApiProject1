@@ -61,3 +61,6 @@ resharper.xml
 Thumbs.db
 
 .vs/
+
+#Ortam Değişkenleri için
+.env
