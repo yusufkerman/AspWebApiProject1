@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureMySqlContext(builder.Configuration);
 builder.Services.ConfigureJWTAuthentication(builder.Configuration);
 builder.Services.RegisterIOCForManagers();
+builder.Services.RegisterIOCForActionFilters();
 builder.Services.ConfigureIdentity();
 
 builder.Services.AddAutoMapper(typeof(Program));

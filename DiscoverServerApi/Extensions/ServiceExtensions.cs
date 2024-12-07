@@ -7,6 +7,7 @@ using Services.Contracts;
 using Services;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
+using Presentation.ActionFilters;
 
 namespace MyWebServerProject.Extensions
 {
@@ -76,6 +77,9 @@ namespace MyWebServerProject.Extensions
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
         }
-    
+        public static void RegisterIOCForActionFilters(this IServiceCollection services)
+        {
+            services.AddScoped<ApiKeyFilter>();
+        }
     }
 }

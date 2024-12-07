@@ -4,6 +4,7 @@ using Entities.DataTransferObjects;
 using Services.Contracts;
 using Microsoft.AspNetCore.Identity;
 using DotNetEnv;
+using Presentation.ActionFilters;
 
 namespace Presentation.Controllers
 {
@@ -18,23 +19,10 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(ApiKeyFilter))]
         public async Task<IActionResult> RegisterUser(
             [FromBody] UserRegistirationInformationDto userInformation)
         {
-            //Request header kısmında api key gönderilmiş mi kontrol eder.
-            if (!Request.Headers.TryGetValue("X-API-KEY", out var apiKey))
-            {
-                return Unauthorized("API key is missing"); // 401
-            }
-
-            //Gelen api key için doğrulama yapar.
-            var isValidApiKey = _serviceManager.ApiKeyValidationService.ValidateApiKey(apiKey);
-
-            //Eğer doğru api key değil ise 401 döner.
-            if (!isValidApiKey)
-            {
-                return Unauthorized("Invalid API key"); // 401
-            }
 
             var result = await _serviceManager
                 .AuthenticationService
@@ -51,7 +39,9 @@ namespace Presentation.Controllers
 
             return StatusCode(201);
         }
+
         [HttpPost("login")]
+        [ServiceFilter(typeof(ApiKeyFilter))]
         public async Task<IActionResult> Authenticate(
             [FromBody] UserAuthenticationInformationDto userInformation)
         {
