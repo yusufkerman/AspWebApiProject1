@@ -26,7 +26,7 @@ namespace Presentation.Controllers
 
             var result = await _serviceManager
                 .AuthenticationService
-                .RegisterUser(userInformation);
+                .RegisterUserAsync(userInformation);
 
             if (!result.Succeeded)
             {
@@ -46,7 +46,7 @@ namespace Presentation.Controllers
             [FromBody] UserAuthenticationInformationDto userInformation)
         {
 
-            if (!await _serviceManager.AuthenticationService.ValidateUser(userInformation))
+            if (!await _serviceManager.AuthenticationService.ValidateUserAsync(userInformation))
             {
                 return Unauthorized(); //401
             }
@@ -58,8 +58,6 @@ namespace Presentation.Controllers
             var tokenDto = await _serviceManager
                 .AuthenticationService
                 .GenerateJwtToken(userInformation.UserName);
-
-
 
             return Ok(tokenDto);
         }

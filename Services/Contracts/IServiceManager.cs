@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MQTTModule.Contracts;
+
 
 namespace Services.Contracts
 {
@@ -11,5 +8,6 @@ namespace Services.Contracts
         IAuthenticationService AuthenticationService { get; }
         IUserService UserService { get; }
         IApiKeyValidationService ApiKeyValidationService { get; }
+        IMQTTServices MQTTServices { get; }
     }
 }

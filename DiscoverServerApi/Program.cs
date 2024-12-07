@@ -1,4 +1,5 @@
 using MyWebServerProject.Extensions;
+using System.Diagnostics;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ builder.Services.ConfigureMySqlContext(builder.Configuration);
 builder.Services.ConfigureJWTAuthentication(builder.Configuration);
 builder.Services.RegisterIOCForManagers();
 builder.Services.RegisterIOCForActionFilters();
+builder.Services.RegisterIOCForMQTTServices();
 builder.Services.ConfigureIdentity();
 
 builder.Services.AddAutoMapper(typeof(Program));
@@ -35,6 +37,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//Authentication Service içerisindeki event aboneliklerinin gerçekleþmesini saðlar.
+app.Services.InitializeAuthenticationService();
+
+//Start MQTT Server
+await app.Services.RunMQTTServer();
 
 app.Run();
 //app.Run("http://0.0.0.0:5000");

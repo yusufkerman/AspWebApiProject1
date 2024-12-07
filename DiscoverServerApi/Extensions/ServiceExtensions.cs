@@ -8,6 +8,8 @@ using Services;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Presentation.ActionFilters;
+using MQTTModule.Contracts;
+using MQTTModule;
 
 namespace MyWebServerProject.Extensions
 {
@@ -81,5 +83,41 @@ namespace MyWebServerProject.Extensions
         {
             services.AddScoped<ApiKeyFilter>();
         }
+        public static void RegisterIOCForMQTTServices(this IServiceCollection services)
+        {
+            services.AddSingleton<IMQTTServices,MQTTServiceManager>();
+            services.AddSingleton<IMQTTServer,MQTTServerHandler>();
+        }
+        public static async Task RunMQTTServer(this IServiceProvider services)
+        {
+            // Yeni bir scope oluştur
+            using (var scope = services.CreateScope())
+            {
+                var scopedServices = scope.ServiceProvider;
+
+                // Scoped servisi al
+                var mqttService = scopedServices.GetRequiredService<IMQTTServices>();
+
+                // MQTT sunucusunu başlat
+                await mqttService.MQTTServer.StartServer();
+            }
+        }
+        public static void InitializeAuthenticationService(this IServiceProvider services)
+        {
+            // Yeni bir scope oluştur
+            using (var scope = services.CreateScope())
+            {
+                var scopedServices = scope.ServiceProvider;
+
+                // Scoped servisi al
+                var authService = scopedServices.GetRequiredService<IAuthenticationService>();
+
+                // Aboneliklerin yapılandırılmasını sağla
+                authService.InitializeMqttSubscription();
+            }
+        }
+    
+    
+    
     }
 }

@@ -10,8 +10,11 @@ namespace Services.Contracts
 {
     public interface IAuthenticationService
     {
-        Task<IdentityResult> RegisterUser(UserRegistirationInformationDto userInformation);
+        void InitializeMqttSubscription();
+        Task<IdentityResult> RegisterUserAsync(UserRegistirationInformationDto userInformation);
         Task<string> GenerateJwtToken(string username);
-        Task<bool> ValidateUser(UserAuthenticationInformationDto userInformation);
+        bool ValidateJwtToken(string token);
+        string GetUsernameFromJwtToken(string token);
+        Task<bool> ValidateUserAsync(UserAuthenticationInformationDto userInformation);
     }
 }
